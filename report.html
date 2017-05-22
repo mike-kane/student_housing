@@ -11878,7 +11878,7 @@ Index([&#39;school&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;address&#39;, &#39;f
 <span class="n">n_failed</span> <span class="o">=</span> <span class="n">passed_series</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># # TODO: Calculate graduation rate</span>
-<span class="n">grad_rate</span> <span class="o">=</span> <span class="n">n_passed</span> <span class="o">/</span> <span class="n">n_students</span>
+<span class="n">grad_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_passed</span> <span class="o">/</span> <span class="n">n_students</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 
 <span class="c1"># Print the results</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Total number of students: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_students</span><span class="p">))</span>
@@ -11902,7 +11902,7 @@ Index([&#39;school&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;address&#39;, &#39;f
 Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
-Graduation rate of the class: 0.67%
+Graduation rate of the class: 67.09%
 </pre>
 </div>
 </div>
@@ -12273,18 +12273,18 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">KNeighborsClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
 
 <span class="c1"># TODO: Initialize the three models</span>
 <span class="n">clf_A</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
-<span class="n">clf_C</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">clf_C</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 
 <span class="c1"># TODO: Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
@@ -12308,7 +12308,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Train GaussianNB</span>
@@ -12334,15 +12334,15 @@ Testing set has 95 samples.
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>--------------------------------------------------
 Training a GaussianNB using a training set size of 100. . .
-Trained model in 0.0020 seconds
-Made predictions in 0.0004 seconds.
+Trained model in 0.0026 seconds
+Made predictions in 0.0006 seconds.
 F1 score for training set: 0.7377.
-Made predictions in 0.0003 seconds.
+Made predictions in 0.0004 seconds.
 F1 score for test set: 0.7241.
 --------------------------------------------------
 --------------------------------------------------
 Training a GaussianNB using a training set size of 200. . .
-Trained model in 0.0008 seconds
+Trained model in 0.0009 seconds
 Made predictions in 0.0004 seconds.
 F1 score for training set: 0.7774.
 Made predictions in 0.0003 seconds.
@@ -12350,8 +12350,8 @@ F1 score for test set: 0.7049.
 --------------------------------------------------
 --------------------------------------------------
 Training a GaussianNB using a training set size of 300. . .
-Trained model in 0.0011 seconds
-Made predictions in 0.0006 seconds.
+Trained model in 0.0008 seconds
+Made predictions in 0.0004 seconds.
 F1 score for training set: 0.8152.
 Made predictions in 0.0003 seconds.
 F1 score for test set: 0.7556.
@@ -12366,7 +12366,7 @@ F1 score for test set: 0.7556.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Train KNN Classifier</span>
@@ -12393,8 +12393,8 @@ F1 score for test set: 0.7556.
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>--------------------------------------------------
 Training a KNeighborsClassifier using a training set size of 100. . .
-Trained model in 0.0007 seconds
-Made predictions in 0.0023 seconds.
+Trained model in 0.0037 seconds
+Made predictions in 0.0030 seconds.
 F1 score for training set: 0.7945.
 Made predictions in 0.0014 seconds.
 F1 score for test set: 0.7801.
@@ -12402,17 +12402,17 @@ F1 score for test set: 0.7801.
 --------------------------------------------------
 Training a KNeighborsClassifier using a training set size of 200. . .
 Trained model in 0.0006 seconds
-Made predictions in 0.0034 seconds.
+Made predictions in 0.0032 seconds.
 F1 score for training set: 0.8328.
-Made predictions in 0.0019 seconds.
+Made predictions in 0.0017 seconds.
 F1 score for test set: 0.7943.
 --------------------------------------------------
 --------------------------------------------------
 Training a KNeighborsClassifier using a training set size of 300. . .
-Trained model in 0.0007 seconds
-Made predictions in 0.0069 seconds.
+Trained model in 0.0008 seconds
+Made predictions in 0.0060 seconds.
 F1 score for training set: 0.8519.
-Made predictions in 0.0025 seconds.
+Made predictions in 0.0022 seconds.
 F1 score for test set: 0.7692.
 --------------------------------------------------
 </pre>
@@ -12425,7 +12425,7 @@ F1 score for test set: 0.7692.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Train Random Forest</span>
@@ -12451,28 +12451,28 @@ F1 score for test set: 0.7692.
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>--------------------------------------------------
-Training a RandomForestClassifier using a training set size of 100. . .
-Trained model in 0.0133 seconds
-Made predictions in 0.0012 seconds.
-F1 score for training set: 0.9848.
-Made predictions in 0.0016 seconds.
-F1 score for test set: 0.7402.
---------------------------------------------------
---------------------------------------------------
-Training a RandomForestClassifier using a training set size of 200. . .
-Trained model in 0.0164 seconds
+Training a DecisionTreeClassifier using a training set size of 100. . .
+Trained model in 0.0041 seconds
 Made predictions in 0.0015 seconds.
-F1 score for training set: 0.9888.
-Made predictions in 0.0010 seconds.
-F1 score for test set: 0.7200.
+F1 score for training set: 1.0000.
+Made predictions in 0.0003 seconds.
+F1 score for test set: 0.7154.
 --------------------------------------------------
 --------------------------------------------------
-Training a RandomForestClassifier using a training set size of 300. . .
-Trained model in 0.0146 seconds
-Made predictions in 0.0013 seconds.
-F1 score for training set: 0.9777.
-Made predictions in 0.0011 seconds.
-F1 score for test set: 0.7143.
+Training a DecisionTreeClassifier using a training set size of 200. . .
+Trained model in 0.0014 seconds
+Made predictions in 0.0002 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.7273.
+--------------------------------------------------
+--------------------------------------------------
+Training a DecisionTreeClassifier using a training set size of 300. . .
+Trained model in 0.0023 seconds
+Made predictions in 0.0005 seconds.
+F1 score for training set: 1.0000.
+Made predictions in 0.0002 seconds.
+F1 score for test set: 0.6306.
 --------------------------------------------------
 </pre>
 </div>
@@ -12510,28 +12510,28 @@ F1 score for test set: 0.7143.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0042 seconds</td>
-<td style="text-align:center">0.0015 seconds</td>
+<td style="text-align:center">0.0031 seconds</td>
+<td style="text-align:center">0.0005 seconds</td>
 <td style="text-align:center">0.7377</td>
 <td style="text-align:center">0.7241</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0027 seconds</td>
-<td style="text-align:center">0.0013 seconds</td>
+<td style="text-align:center">0.0011 seconds</td>
+<td style="text-align:center">0.0016 seconds</td>
 <td style="text-align:center">0.7774</td>
 <td style="text-align:center">0.7049</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0012 seconds</td>
-<td style="text-align:center">0.0019 seconds</td>
+<td style="text-align:center">0.0013 seconds</td>
+<td style="text-align:center">0.0006 seconds</td>
 <td style="text-align:center">0.8152</td>
 <td style="text-align:center">0.7556</td>
 </tr>
 </tbody>
 </table>
-<p><strong> Classifer 2 - KNN Classifier</strong></p>
+<p><strong> Classifer 2 - K-Nearest Neighbors</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12544,28 +12544,28 @@ F1 score for test set: 0.7143.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0085 seconds</td>
-<td style="text-align:center">0.0030 seconds</td>
+<td style="text-align:center">0.0008 seconds</td>
+<td style="text-align:center">0.0023 seconds</td>
 <td style="text-align:center">0.7945</td>
 <td style="text-align:center">0.7801</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0005 seconds</td>
-<td style="text-align:center">0.0029 seconds</td>
+<td style="text-align:center">0.0008 seconds</td>
+<td style="text-align:center">0.0026 seconds</td>
 <td style="text-align:center">0.8328</td>
 <td style="text-align:center">0.7943</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0006 seconds</td>
-<td style="text-align:center">0.0060 seconds</td>
+<td style="text-align:center">0.0009 seconds</td>
+<td style="text-align:center">0.0035 seconds</td>
 <td style="text-align:center">0.8519</td>
 <td style="text-align:center">0.7692</td>
 </tr>
 </tbody>
 </table>
-<p><strong> Classifer 3 - Random Forest</strong></p>
+<p><strong> Classifer 3 - Decision Tree</strong></p>
 <table>
 <thead><tr>
 <th style="text-align:center">Training Set Size</th>
@@ -12578,24 +12578,24 @@ F1 score for test set: 0.7143.
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0250 seconds</td>
-<td style="text-align:center">0.0016 seconds</td>
-<td style="text-align:center">0.9851</td>
-<td style="text-align:center">0.7344</td>
+<td style="text-align:center">0.0033 seconds</td>
+<td style="text-align:center">0.0005 seconds</td>
+<td style="text-align:center">1.0000</td>
+<td style="text-align:center">0.7154</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0207 seconds</td>
-<td style="text-align:center">0.0014 seconds</td>
-<td style="text-align:center">0.9925</td>
-<td style="text-align:center">0.7132</td>
+<td style="text-align:center">0.0018 seconds</td>
+<td style="text-align:center">0.0003 seconds</td>
+<td style="text-align:center">1.0000</td>
+<td style="text-align:center">0.7273</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0151 seconds</td>
-<td style="text-align:center">0.0019 seconds</td>
-<td style="text-align:center">0.9852</td>
-<td style="text-align:center">0.6719</td>
+<td style="text-align:center">0.0025 seconds</td>
+<td style="text-align:center">0.0005 seconds</td>
+<td style="text-align:center">1.0000</td>
+<td style="text-align:center">0.6306</td>
 </tr>
 </tbody>
 </table>
@@ -12682,7 +12682,7 @@ F1 score for test set: 0.7143.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
@@ -12727,9 +12727,9 @@ F1 score for test set: 0.7143.
 <pre>KNeighborsClassifier(algorithm=&#39;brute&#39;, leaf_size=30, metric=&#39;minkowski&#39;,
            metric_params=None, n_jobs=1, n_neighbors=7, p=2,
            weights=&#39;uniform&#39;)
-Made predictions in 0.0019 seconds.
+Made predictions in 0.0026 seconds.
 Tuned model has a training F1 score of 0.8349.
-Made predictions in 0.0011 seconds.
+Made predictions in 0.0009 seconds.
 Tuned model has a testing F1 score of 0.7801.
 </pre>
 </div>
